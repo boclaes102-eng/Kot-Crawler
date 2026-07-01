@@ -19,7 +19,7 @@ back — paste it when asking for scraper fixes.
 
 | Site | How it's scraped | Notes |
 |---|---|---|
-| **kotwijs.be** | JSON API (no browser) | The official KU Leuven kot database — the primary source, typically 500+ listings with reliable structured data (price, size, private/shared bathroom & kitchen, internet, utilities, furnished, availability). |
+| **kotwijs.be** | JSON API (no browser) | The official KU Leuven kot database — the primary source, typically 400+ listings with reliable structured data (price, size, private/shared bathroom & kitchen, internet, utilities, furnished, availability). Automatically filtered to the **coming academic year** (e.g. 2026–2027), so units that are only free during the current/past year — i.e. already taken for next year — are excluded. |
 | **2dehands.be** | Static HTML + embedded JSON-LD | Price/title/availability come from schema.org data on the detail page. |
 | **huurwoningen.be** | Static HTML | Blocks datacenter IPs; works from a normal home connection. |
 | **immoweb.be** | Playwright (Chromium) reading the site's JSON search API | Filters to Leuven postcodes and kot-sized listings. |

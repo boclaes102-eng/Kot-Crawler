@@ -79,12 +79,37 @@ def _get(session, path: str) -> dict | None:
         return None
 
 
-def _search_page(session, page: int) -> tuple[list[dict], int]:
+def _pick_academic_year(session) -> tuple[int | None, str]:
+    """Choose the availability filter for the COMING academic year.
+
+    getfilterdata returns options like {"id": 7, "label": "2026 - 2027"}.
+    We take the one with the latest starting year: kotwijs only offers
+    the current and the next school year, and someone crawling for a kot
+    always wants the next one.  Without this filter the search also
+    returns units that are only free during the current/past year —
+    i.e. already taken for the year the student needs.
+    """
+    data = _get(session, "tenants/search/getfilterdata")
+    options = ((data or {}).get("data") or {}).get("availabilityOptions") or []
+    log.debug(f"availabilityOptions: {options}")
+    best_id, best_year, best_label = None, -1, ""
+    for opt in options:
+        m = re.search(r"\d{4}", str(opt.get("label") or ""))
+        if m and int(m.group(0)) > best_year:
+            best_year = int(m.group(0))
+            best_id = opt.get("id")
+            best_label = opt.get("label")
+    if best_id is None:
+        log.warning("No availability options found — crawling without year filter!")
+    return best_id, best_label
+
+
+def _search_page(session, page: int, availability_id: int | None) -> tuple[list[dict], int]:
     body = {
         "sort": {"latitude": LEUVEN_LAT, "longitude": LEUVEN_LON,
                  "direction": 1, "type": 1},  # 1 = ascending by distance
         "filter": {"freeUnitsInBuilding": None, "types": [],
-                   "facilities": [], "availabilityId": None},
+                   "facilities": [], "availabilityId": availability_id},
         "paging": {"page": page, "size": PAGE_SIZE},
     }
     data = _post(session, "tenants/search/getresults", body)
@@ -198,10 +223,15 @@ def scrape(test_mode: bool = False) -> list[KotListing]:
     log.info("  [kotwijs.be] Querying official KU Leuven kot database...")
     print("  [kotwijs.be] Querying official KU Leuven kot database...")
 
+    availability_id, year_label = _pick_academic_year(session)
+    if year_label:
+        log.info(f"  [kotwijs.be] Filtering on academic year: {year_label}")
+        print(f"  [kotwijs.be] Filtering on academic year: {year_label}")
+
     page = 1
     total = None
     while True:
-        items, total_count = _search_page(session, page)
+        items, total_count = _search_page(session, page, availability_id)
         if total is None and total_count:
             total = total_count
             log.info(f"  [kotwijs.be] {total} listings in database")
