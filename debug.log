@@ -210,3 +210,303 @@
 23:08:56 [INFO   ] kot.main:   immoweb.be: 3 listings collected
 23:08:56 [INFO   ] kot.main:   Total: 6 listings
 23:08:56 [INFO   ] kot.main: Excel written: koten_leuven_20260701_230856.xlsx
+
+======================================================================
+  RUN  2026-07-01 21:58:27   mode=TEST
+======================================================================
+21:58:27 [INFO   ] kot.kotwijs:   [kotwijs.be] Querying official KU Leuven kot database...
+21:58:29 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/search/getresults  [application/json; charset=utf-8]
+21:58:29 [INFO   ] kot.kotwijs:   [kotwijs.be] 583 listings in database
+21:58:29 [INFO   ] kot.kotwijs:   [kotwijs.be] Page 1: 100 items
+21:58:29 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=11870  [application/json; charset=utf-8]
+21:58:29 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8770155, 'longitude': 4.701497799999999, 'street': 'Sint-Michielsstraat', 'number': "  →  'Sint-Michielsstraat 13, Leuven'
+21:58:29 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 770.0, 'to': None}"  →  '770'
+21:58:29 [INFO   ] kot.kotwijs:     + Huis Sint-Michielsstraat 13, Leuven (unit 0001)  (770 €)
+21:58:30 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=11107  [application/json; charset=utf-8]
+21:58:30 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.877078, 'longitude': 4.700539200000001, 'street': 'Naamsestraat', 'number': '38', 'c"  →  'Naamsestraat 38, Leuven'
+21:58:30 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 755.0, 'to': None}"  →  '755'
+21:58:30 [INFO   ] kot.kotwijs:     + Huis Naamsestraat 38, Leuven (unit 0302)  (755 €)
+21:58:31 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=8317  [application/json; charset=utf-8]
+21:58:31 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8770889, 'longitude': 4.7004752, 'street': 'Collegeberg', 'number': '2', 'city': 'Le"  →  'Collegeberg 2, Leuven'
+21:58:31 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 1385.83, 'to': None}"  →  '1385.83'
+21:58:31 [INFO   ] kot.kotwijs:     + Appartement Collegeberg 2, Leuven (unit 0301)  (1385.83 €)
+21:58:31 [INFO   ] kot.kotwijs:   [kotwijs.be] Done (test) — 3 listings.
+21:58:31 [INFO   ] kot.main:   kotwijs.be: 3 listings collected
+21:58:31 [INFO   ] kot.2dehands:   [2dehands.be] Starting search...
+21:58:34 [DEBUG  ] kot.2dehands: GET 200  https://www.2dehands.be/q/kot+leuven/  [text/html; charset=utf-8]
+21:58:34 [DEBUG  ] kot.2dehands: Immo supply links found: 2
+21:58:34 [INFO   ] kot.2dehands:   [2dehands.be] Page 1: 2 immo links
+21:58:37 [DEBUG  ] kot.2dehands: GET 200  https://www.2dehands.be/v/immo/appartementen-en-studio-s-te-huur/m2410701514-rustig-licht-kot-terras-in-stijlvolle-herenwoning-leuven  [text/html; charset=utf-8]
+21:58:37 [DEBUG  ] kot.2dehands:   field 'price': raw='599'  →  '599'
+21:58:37 [DEBUG  ] kot.2dehands: Kenmerken: {'regio': 'Leuven', 'woonoppervlakte': 'Minder dan 20 m²'}
+21:58:37 [DEBUG  ] kot.2dehands:   field 'size': raw='Minder dan 20 m²'  →  '20'
+21:58:37 [INFO   ] kot.2dehands:     + Rustig licht kot + terras in stijlvolle herenwoning Leuven  (599 €)
+21:58:41 [DEBUG  ] kot.2dehands: GET 200  https://www.2dehands.be/v/immo/appartementen-en-studio-s-te-huur/m2410118583-ruim-lichtrijk-kot-terras-in-stijlvolle-herenwoning-leuven  [text/html; charset=utf-8]
+21:58:41 [DEBUG  ] kot.2dehands:   field 'price': raw='599'  →  '599'
+21:58:41 [DEBUG  ] kot.2dehands: Kenmerken: {'regio': 'Leuven', 'woonoppervlakte': 'Minder dan 20 m²'}
+21:58:41 [DEBUG  ] kot.2dehands:   field 'size': raw='Minder dan 20 m²'  →  '20'
+21:58:41 [INFO   ] kot.2dehands:     + Ruim lichtrijk kot + terras in stijlvolle herenwoning Leuven  (599 €)
+21:58:44 [DEBUG  ] kot.2dehands: GET 200  https://www.2dehands.be/q/kot+leuven/p/2/  [text/html; charset=utf-8]
+21:58:44 [DEBUG  ] kot.2dehands: Skipping non-supply category: op-zoek-naar-een-appartement
+21:58:44 [DEBUG  ] kot.2dehands: Skipping non-supply category: op-zoek-naar-een-appartement
+21:58:44 [DEBUG  ] kot.2dehands: Skipping non-supply category: op-zoek-naar-een-appartement
+21:58:44 [DEBUG  ] kot.2dehands: Skipping non-supply category: op-zoek-naar-een-appartement
+21:58:44 [DEBUG  ] kot.2dehands: Skipping non-supply category: op-zoek-naar-een-appartement
+21:58:44 [DEBUG  ] kot.2dehands: Skipping non-supply category: op-zoek-naar-een-appartement
+21:58:44 [DEBUG  ] kot.2dehands: Immo supply links found: 1
+21:58:44 [INFO   ] kot.2dehands:   [2dehands.be] Page 2: 1 immo links
+21:58:47 [DEBUG  ] kot.2dehands: GET 200  https://www.2dehands.be/v/immo/appartementen-en-studio-s-te-huur/m2401895752-lichtrijk-kot-privebalkon-dakterras-leuven-599-all-in  [text/html; charset=utf-8]
+21:58:47 [DEBUG  ] kot.2dehands:   field 'price': raw='599'  →  '599'
+21:58:47 [DEBUG  ] kot.2dehands: Kenmerken: {'regio': 'Leuven', 'woonoppervlakte': 'Minder dan 20 m²'}
+21:58:47 [DEBUG  ] kot.2dehands:   field 'size': raw='Minder dan 20 m²'  →  '20'
+21:58:47 [INFO   ] kot.2dehands:     + Lichtrijk kot + privébalkon + dakterras Leuven 599€ ALL-IN  (599 €)
+21:58:47 [INFO   ] kot.2dehands:   [2dehands.be] Done (test) — 3 listings.
+21:58:47 [INFO   ] kot.main:   2dehands.be: 3 listings collected
+21:58:47 [INFO   ] kot.huurwoningen:   [huurwoningen.be] Starting search...
+21:58:49 [DEBUG  ] kot.huurwoningen: GET 403  https://huurwoningen.be/studentenwoning-huren/leuven  [text/html; charset=UTF-8]
+21:58:49 [DEBUG  ] kot.huurwoningen: Skipping https://huurwoningen.be/studentenwoning-huren/leuven — HTTP 403
+21:58:52 [DEBUG  ] kot.huurwoningen: GET 403  https://huurwoningen.be/kamer-huren/leuven  [text/html; charset=UTF-8]
+21:58:52 [DEBUG  ] kot.huurwoningen: Skipping https://huurwoningen.be/kamer-huren/leuven — HTTP 403
+21:58:55 [DEBUG  ] kot.huurwoningen: GET 403  https://huurwoningen.be/studio-huren/leuven  [text/html; charset=UTF-8]
+21:58:55 [DEBUG  ] kot.huurwoningen: Skipping https://huurwoningen.be/studio-huren/leuven — HTTP 403
+21:58:58 [DEBUG  ] kot.huurwoningen: GET 403  https://huurwoningen.be/appartement-huren/leuven  [text/html; charset=UTF-8]
+21:58:58 [DEBUG  ] kot.huurwoningen: Skipping https://huurwoningen.be/appartement-huren/leuven — HTTP 403
+21:59:00 [DEBUG  ] kot.huurwoningen: GET 403  https://huurwoningen.be/huurwoningen/leuven  [text/html; charset=UTF-8]
+21:59:00 [DEBUG  ] kot.huurwoningen: Skipping https://huurwoningen.be/huurwoningen/leuven — HTTP 403
+21:59:00 [WARNING] kot.huurwoningen:   [huurwoningen.be] No working URL found — check debug.log
+21:59:00 [INFO   ] kot.main:   huurwoningen.be: 0 listings collected
+21:59:00 [INFO   ] kot.immoweb:   [immoweb.be] Starting (Playwright/Chromium)...
+21:59:00 [ERROR  ] kot.immoweb:   [immoweb.be] Unexpected error: BrowserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+21:59:00 [INFO   ] kot.main:   immoweb.be: 0 listings collected
+21:59:00 [INFO   ] kot.zimmo:   [zimmo.be] Starting search (Playwright)...
+21:59:01 [ERROR  ] kot.zimmo:   [zimmo.be] Error: BrowserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+21:59:01 [INFO   ] kot.main:   zimmo.be: 0 listings collected
+21:59:01 [DEBUG  ] kot.main: Duplicate dropped: 2dehands.be Leuven (599 €)
+21:59:01 [DEBUG  ] kot.main: Duplicate dropped: 2dehands.be Leuven (599 €)
+21:59:01 [INFO   ] kot.main:   Deduplication removed 2 cross-site duplicates
+21:59:01 [INFO   ] kot.main:   Total: 4 listings
+21:59:01 [INFO   ] kot.main: Excel written: koten_leuven_20260701_215901.xlsx
+
+======================================================================
+  RUN  2026-07-01 21:59:19   mode=TEST
+======================================================================
+21:59:19 [INFO   ] kot.kotwijs:   [kotwijs.be] Querying official KU Leuven kot database...
+21:59:20 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/search/getresults  [application/json; charset=utf-8]
+21:59:20 [INFO   ] kot.kotwijs:   [kotwijs.be] 583 listings in database
+21:59:20 [INFO   ] kot.kotwijs:   [kotwijs.be] Page 1: 100 items
+21:59:21 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=11870  [application/json; charset=utf-8]
+21:59:21 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8770155, 'longitude': 4.701497799999999, 'street': 'Sint-Michielsstraat', 'number': "  →  'Sint-Michielsstraat 13, Leuven'
+21:59:21 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 770.0, 'to': None}"  →  '770'
+21:59:21 [INFO   ] kot.kotwijs:     + Huis Sint-Michielsstraat 13, Leuven (unit 0001)  (770 €)
+21:59:22 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=11107  [application/json; charset=utf-8]
+21:59:22 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.877078, 'longitude': 4.700539200000001, 'street': 'Naamsestraat', 'number': '38', 'c"  →  'Naamsestraat 38, Leuven'
+21:59:22 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 755.0, 'to': None}"  →  '755'
+21:59:22 [INFO   ] kot.kotwijs:     + Huis Naamsestraat 38, Leuven (unit 0302)  (755 €)
+21:59:23 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=8317  [application/json; charset=utf-8]
+21:59:23 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8770889, 'longitude': 4.7004752, 'street': 'Collegeberg', 'number': '2', 'city': 'Le"  →  'Collegeberg 2, Leuven'
+21:59:23 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 1385.83, 'to': None}"  →  '1385.83'
+21:59:23 [INFO   ] kot.kotwijs:     + Appartement Collegeberg 2, Leuven (unit 0301)  (1385.83 €)
+21:59:23 [INFO   ] kot.kotwijs:   [kotwijs.be] Done (test) — 3 listings.
+21:59:23 [INFO   ] kot.main:   kotwijs.be: 3 listings collected
+21:59:23 [INFO   ] kot.2dehands:   [2dehands.be] Starting search...
+21:59:26 [DEBUG  ] kot.2dehands: GET 200  https://www.2dehands.be/q/kot+leuven/  [text/html; charset=utf-8]
+21:59:26 [DEBUG  ] kot.2dehands: Immo supply links found: 2
+21:59:26 [INFO   ] kot.2dehands:   [2dehands.be] Page 1: 2 immo links
+21:59:29 [DEBUG  ] kot.2dehands: GET 200  https://www.2dehands.be/v/immo/appartementen-en-studio-s-te-huur/m2410701514-rustig-licht-kot-terras-in-stijlvolle-herenwoning-leuven  [text/html; charset=utf-8]
+21:59:29 [DEBUG  ] kot.2dehands:   field 'price': raw='599'  →  '599'
+21:59:29 [DEBUG  ] kot.2dehands: Kenmerken: {'regio': 'Leuven', 'woonoppervlakte': 'Minder dan 20 m²'}
+21:59:29 [DEBUG  ] kot.2dehands:   field 'size': raw='Minder dan 20 m²'  →  '20'
+21:59:29 [INFO   ] kot.2dehands:     + Rustig licht kot + terras in stijlvolle herenwoning Leuven  (599 €)
+21:59:32 [DEBUG  ] kot.2dehands: GET 200  https://www.2dehands.be/v/immo/appartementen-en-studio-s-te-huur/m2410118583-ruim-lichtrijk-kot-terras-in-stijlvolle-herenwoning-leuven  [text/html; charset=utf-8]
+21:59:32 [DEBUG  ] kot.2dehands:   field 'price': raw='599'  →  '599'
+21:59:32 [DEBUG  ] kot.2dehands: Kenmerken: {'regio': 'Leuven', 'woonoppervlakte': 'Minder dan 20 m²'}
+21:59:32 [DEBUG  ] kot.2dehands:   field 'size': raw='Minder dan 20 m²'  →  '20'
+21:59:32 [INFO   ] kot.2dehands:     + Ruim lichtrijk kot + terras in stijlvolle herenwoning Leuven  (599 €)
+21:59:34 [DEBUG  ] kot.2dehands: GET 200  https://www.2dehands.be/q/kot+leuven/p/2/  [text/html; charset=utf-8]
+21:59:34 [DEBUG  ] kot.2dehands: Skipping non-supply category: op-zoek-naar-een-appartement
+21:59:34 [DEBUG  ] kot.2dehands: Skipping non-supply category: op-zoek-naar-een-appartement
+21:59:34 [DEBUG  ] kot.2dehands: Skipping non-supply category: op-zoek-naar-een-appartement
+21:59:34 [DEBUG  ] kot.2dehands: Skipping non-supply category: op-zoek-naar-een-appartement
+21:59:34 [DEBUG  ] kot.2dehands: Skipping non-supply category: op-zoek-naar-een-appartement
+21:59:34 [DEBUG  ] kot.2dehands: Skipping non-supply category: op-zoek-naar-een-appartement
+21:59:34 [DEBUG  ] kot.2dehands: Immo supply links found: 1
+21:59:34 [INFO   ] kot.2dehands:   [2dehands.be] Page 2: 1 immo links
+21:59:37 [DEBUG  ] kot.2dehands: GET 200  https://www.2dehands.be/v/immo/appartementen-en-studio-s-te-huur/m2401895752-lichtrijk-kot-privebalkon-dakterras-leuven-599-all-in  [text/html; charset=utf-8]
+21:59:37 [DEBUG  ] kot.2dehands:   field 'price': raw='599'  →  '599'
+21:59:37 [DEBUG  ] kot.2dehands: Kenmerken: {'regio': 'Leuven', 'woonoppervlakte': 'Minder dan 20 m²'}
+21:59:37 [DEBUG  ] kot.2dehands:   field 'size': raw='Minder dan 20 m²'  →  '20'
+21:59:37 [INFO   ] kot.2dehands:     + Lichtrijk kot + privébalkon + dakterras Leuven 599€ ALL-IN  (599 €)
+21:59:37 [INFO   ] kot.2dehands:   [2dehands.be] Done (test) — 3 listings.
+21:59:37 [ERROR  ] kot.main:   [ERROR] 2dehands.be crashed: [Errno 32] Broken pipe
+
+======================================================================
+  RUN  2026-07-01 22:00:40   mode=FULL
+======================================================================
+22:00:40 [INFO   ] kot.kotwijs:   [kotwijs.be] Querying official KU Leuven kot database...
+22:00:41 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/search/getresults  [application/json; charset=utf-8]
+22:00:41 [INFO   ] kot.kotwijs:   [kotwijs.be] 583 listings in database
+22:00:41 [INFO   ] kot.kotwijs:   [kotwijs.be] Page 1: 100 items
+22:00:42 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=11870  [application/json; charset=utf-8]
+22:00:42 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8770155, 'longitude': 4.701497799999999, 'street': 'Sint-Michielsstraat', 'number': "  →  'Sint-Michielsstraat 13, Leuven'
+22:00:42 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 770.0, 'to': None}"  →  '770'
+22:00:42 [INFO   ] kot.kotwijs:     + Huis Sint-Michielsstraat 13, Leuven (unit 0001)  (770 €)
+22:00:42 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=11107  [application/json; charset=utf-8]
+22:00:42 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.877078, 'longitude': 4.700539200000001, 'street': 'Naamsestraat', 'number': '38', 'c"  →  'Naamsestraat 38, Leuven'
+22:00:42 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 755.0, 'to': None}"  →  '755'
+22:00:42 [INFO   ] kot.kotwijs:     + Huis Naamsestraat 38, Leuven (unit 0302)  (755 €)
+22:00:44 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=8317  [application/json; charset=utf-8]
+22:00:44 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8770889, 'longitude': 4.7004752, 'street': 'Collegeberg', 'number': '2', 'city': 'Le"  →  'Collegeberg 2, Leuven'
+22:00:44 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 1385.83, 'to': None}"  →  '1385.83'
+22:00:44 [INFO   ] kot.kotwijs:     + Appartement Collegeberg 2, Leuven (unit 0301)  (1385.83 €)
+22:00:45 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=8319  [application/json; charset=utf-8]
+22:00:45 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8770889, 'longitude': 4.7004752, 'street': 'Collegeberg', 'number': '2', 'city': 'Le"  →  'Collegeberg 2, Leuven'
+22:00:45 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 940.83, 'to': None}"  →  '940.83'
+22:00:45 [INFO   ] kot.kotwijs:     + Huis Collegeberg 2, Leuven (unit 0002)  (940.83 €)
+22:00:45 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=8314  [application/json; charset=utf-8]
+22:00:45 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8770889, 'longitude': 4.7004752, 'street': 'Collegeberg', 'number': '2', 'city': 'Le"  →  'Collegeberg 2, Leuven'
+22:00:45 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 915.83, 'to': None}"  →  '915.83'
+22:00:45 [INFO   ] kot.kotwijs:     + Huis Collegeberg 2, Leuven (unit 0001)  (915.83 €)
+22:00:46 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=9865  [application/json; charset=utf-8]
+22:00:46 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8745534, 'longitude': 4.7018624, 'street': 'Vlamingenstraat', 'number': '108', 'city"  →  'Vlamingenstraat 108, Leuven'
+22:00:46 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 890.0, 'to': None}"  →  '890'
+22:00:46 [INFO   ] kot.kotwijs:     + Appartement Vlamingenstraat 108, Leuven (unit 0101)  (890 €)
+22:00:47 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=13415  [application/json; charset=utf-8]
+22:00:47 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8773485, 'longitude': 4.7006603, 'street': 'Naamsestraat', 'number': '29A', 'city': "  →  'Naamsestraat 29A, Leuven'
+22:00:47 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 679.17, 'to': None}"  →  '679.17'
+22:00:47 [INFO   ] kot.kotwijs:     + Residentie Naamsestraat 29A, Leuven (unit 0201)  (679.17 €)
+22:00:48 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=13417  [application/json; charset=utf-8]
+22:00:48 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8773485, 'longitude': 4.7006603, 'street': 'Naamsestraat', 'number': '29A', 'city': "  →  'Naamsestraat 29A, Leuven'
+22:00:48 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 614.17, 'to': None}"  →  '614.17'
+22:00:48 [INFO   ] kot.kotwijs:     + Residentie Naamsestraat 29A, Leuven (unit 0201)  (614.17 €)
+22:00:49 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=13419  [application/json; charset=utf-8]
+22:00:49 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8773485, 'longitude': 4.7006603, 'street': 'Naamsestraat', 'number': '29A', 'city': "  →  'Naamsestraat 29A, Leuven'
+22:00:49 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 679.17, 'to': 679.17}"  →  '679.17'
+22:00:49 [INFO   ] kot.kotwijs:     + Residentie Naamsestraat 29A, Leuven  (679.17 €)
+22:00:50 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=13422  [application/json; charset=utf-8]
+22:00:50 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8773485, 'longitude': 4.7006603, 'street': 'Naamsestraat', 'number': '29A', 'city': "  →  'Naamsestraat 29A, Leuven'
+22:00:50 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 584.17, 'to': 614.17}"  →  '584.17'
+22:00:50 [INFO   ] kot.kotwijs:     + Residentie Naamsestraat 29A, Leuven  (584.17 €)
+22:00:50 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=13423  [application/json; charset=utf-8]
+22:00:50 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8773485, 'longitude': 4.7006603, 'street': 'Naamsestraat', 'number': '29A', 'city': "  →  'Naamsestraat 29A, Leuven'
+22:00:50 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 699.17, 'to': 704.17}"  →  '699.17'
+22:00:50 [INFO   ] kot.kotwijs:     + Residentie Naamsestraat 29A, Leuven  (699.17 €)
+22:00:51 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=13424  [application/json; charset=utf-8]
+22:00:51 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8773485, 'longitude': 4.7006603, 'street': 'Naamsestraat', 'number': '29A', 'city': "  →  'Naamsestraat 29A, Leuven'
+22:00:51 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 704.17, 'to': None}"  →  '704.17'
+22:00:51 [INFO   ] kot.kotwijs:     + Huis Naamsestraat 29A, Leuven (unit 0204)  (704.17 €)
+22:00:52 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=13425  [application/json; charset=utf-8]
+22:00:52 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8773485, 'longitude': 4.7006603, 'street': 'Naamsestraat', 'number': '29A', 'city': "  →  'Naamsestraat 29A, Leuven'
+22:00:52 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 638.06, 'to': None}"  →  '638.06'
+22:00:52 [INFO   ] kot.kotwijs:     + Residentie Naamsestraat 29A, Leuven (unit 0205)  (638.06 €)
+22:00:53 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=13094  [application/json; charset=utf-8]
+22:00:53 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8773118, 'longitude': 4.7004436, 'street': 'Naamsestraat', 'number': '32', 'city': '"  →  'Naamsestraat 32, Leuven'
+22:00:53 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 560.0, 'to': None}"  →  '560'
+22:00:53 [INFO   ] kot.kotwijs:     + Appartement Naamsestraat 32, Leuven (unit 0305)  (560 €)
+22:00:53 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=13096  [application/json; charset=utf-8]
+22:00:53 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8773118, 'longitude': 4.7004436, 'street': 'Naamsestraat', 'number': '32', 'city': '"  →  'Naamsestraat 32, Leuven'
+22:00:53 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 560.0, 'to': None}"  →  '560'
+22:00:53 [INFO   ] kot.kotwijs:     + Appartement Naamsestraat 32, Leuven (unit 0204)  (560 €)
+22:00:55 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=13091  [application/json; charset=utf-8]
+22:00:55 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8773118, 'longitude': 4.7004436, 'street': 'Naamsestraat', 'number': '32', 'city': '"  →  'Naamsestraat 32, Leuven'
+22:00:55 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 560.0, 'to': None}"  →  '560'
+22:00:55 [INFO   ] kot.kotwijs:     + Appartement Naamsestraat 32, Leuven (unit 0101)  (560 €)
+22:00:55 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=13095  [application/json; charset=utf-8]
+22:00:55 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8773118, 'longitude': 4.7004436, 'street': 'Naamsestraat', 'number': '32', 'city': '"  →  'Naamsestraat 32, Leuven'
+22:00:55 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 560.0, 'to': None}"  →  '560'
+22:00:55 [INFO   ] kot.kotwijs:     + Appartement Naamsestraat 32, Leuven (unit 0203)  (560 €)
+22:00:56 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=8979  [application/json; charset=utf-8]
+22:00:56 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8774647, 'longitude': 4.7009218, 'street': 'Standonckstraat', 'number': '2A', 'city'"  →  'Standonckstraat 2A, Leuven'
+22:00:56 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 717.71, 'to': None}"  →  '717.71'
+22:00:56 [INFO   ] kot.kotwijs:     + Appartement Standonckstraat 2A, Leuven (unit 0203)  (717.71 €)
+22:00:57 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=12101  [application/json; charset=utf-8]
+22:00:57 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8748143, 'longitude': 4.7031266, 'street': 'Vlamingenstraat', 'number': '51', 'city'"  →  'Vlamingenstraat 51, Leuven'
+22:00:57 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 745.0, 'to': None}"  →  '745'
+22:00:57 [INFO   ] kot.kotwijs:     + Huis Vlamingenstraat 51, Leuven (unit 0202)  (745 €)
+22:00:58 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=13416  [application/json; charset=utf-8]
+22:00:58 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8775312, 'longitude': 4.701183299999999, 'street': 'Standonckstraat', 'number': '11'"  →  'Standonckstraat 11, Leuven'
+22:00:58 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 1090.0, 'to': None}"  →  '1090'
+22:00:58 [INFO   ] kot.kotwijs:     + Appartement Standonckstraat 11, Leuven (unit 0003)  (1090 €)
+22:00:59 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=9847  [application/json; charset=utf-8]
+22:00:59 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8774528, 'longitude': 4.7004832, 'street': 'Naamsestraat', 'number': '26', 'city': '"  →  'Naamsestraat 26, Leuven'
+22:00:59 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 720.0, 'to': None}"  →  '720'
+22:00:59 [INFO   ] kot.kotwijs:     + Huis Naamsestraat 26, Leuven (unit 0202)  (720 €)
+22:01:00 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=12491  [application/json; charset=utf-8]
+22:01:00 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.87436870000001, 'longitude': 4.7013156, 'street': 'Vlamingenstraat', 'number': '122'"  →  'Vlamingenstraat 122, Leuven'
+22:01:00 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 740.0, 'to': None}"  →  '740'
+22:01:00 [INFO   ] kot.kotwijs:     + Huis Vlamingenstraat 122, Leuven (unit 0301)  (740 €)
+22:01:01 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=13562  [application/json; charset=utf-8]
+22:01:01 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8762546, 'longitude': 4.7044552, 'street': 'Charles Deberiotstraat', 'number': '5', "  →  'Charles Deberiotstraat 5, Leuven'
+22:01:01 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 685.0, 'to': None}"  →  '685'
+22:01:01 [INFO   ] kot.kotwijs:     + Huis Charles Deberiotstraat 5, Leuven (unit 0101)  (685 €)
+22:01:02 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=13305  [application/json; charset=utf-8]
+22:01:02 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8776509, 'longitude': 4.6998293, 'street': 'Krakenstraat', 'number': '7', 'city': 'L"  →  'Krakenstraat 7, Leuven'
+22:01:02 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 495.0, 'to': None}"  →  '495'
+22:01:02 [INFO   ] kot.kotwijs:     + Residentie Krakenstraat 7, Leuven (unit 0302)  (495 €)
+22:01:03 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=10007  [application/json; charset=utf-8]
+22:01:03 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8779498, 'longitude': 4.700909, 'street': 'Lakenweversstraat', 'number': '2', 'city'"  →  'Lakenweversstraat 2, Leuven'
+22:01:03 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 677.5, 'to': 942.5}"  →  '677.5'
+22:01:03 [INFO   ] kot.kotwijs:     + Residentie Lakenweversstraat 2, Leuven  (677.5 €)
+22:01:04 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=6333  [application/json; charset=utf-8]
+22:01:04 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8739448, 'longitude': 4.7021902, 'street': 'Prelatenstraat', 'number': '26', 'city':"  →  'Prelatenstraat 26, Leuven'
+22:01:04 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 475.83, 'to': None}"  →  '475.83'
+22:01:04 [INFO   ] kot.kotwijs:     + Residentie Prelatenstraat 26, Leuven (unit 0001)  (475.83 €)
+22:01:05 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=6331  [application/json; charset=utf-8]
+22:01:05 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8739448, 'longitude': 4.7021902, 'street': 'Prelatenstraat', 'number': '26', 'city':"  →  'Prelatenstraat 26, Leuven'
+22:01:05 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 495.83, 'to': None}"  →  '495.83'
+22:01:05 [INFO   ] kot.kotwijs:     + Residentie Prelatenstraat 26, Leuven (unit 0201)  (495.83 €)
+22:01:06 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=10691  [application/json; charset=utf-8]
+22:01:06 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.878131, 'longitude': 4.7009641, 'street': 'Naamsestraat', 'number': '9', 'city': 'Le"  →  'Naamsestraat 9, Leuven'
+22:01:06 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 782.5, 'to': None}"  →  '782.5'
+22:01:06 [INFO   ] kot.kotwijs:     + Huis Naamsestraat 9, Leuven (unit 0203)  (782.5 €)
+22:01:07 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=10808  [application/json; charset=utf-8]
+22:01:07 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8778692, 'longitude': 4.7034045, 'street': 'Muntstraat', 'number': '46', 'city': 'Le"  →  'Muntstraat 46, Leuven'
+22:01:07 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 809.83, 'to': None}"  →  '809.83'
+22:01:07 [INFO   ] kot.kotwijs:     + Appartement Muntstraat 46, Leuven (unit 0402)  (809.83 €)
+22:01:07 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=7654  [application/json; charset=utf-8]
+22:01:07 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8738396, 'longitude': 4.7008486, 'street': 'Parkstraat', 'number': '26', 'city': 'Le"  →  'Parkstraat 26, Leuven'
+22:01:07 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 725.0, 'to': None}"  →  '725'
+22:01:07 [INFO   ] kot.kotwijs:     + Huis Parkstraat 26, Leuven (unit 0102)  (725 €)
+22:01:08 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=8383  [application/json; charset=utf-8]
+22:01:08 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8737302, 'longitude': 4.7010367, 'street': 'Parkstraat', 'number': '32', 'city': 'Le"  →  'Parkstraat 32, Leuven'
+22:01:08 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 925.83, 'to': None}"  →  '925.83'
+22:01:08 [INFO   ] kot.kotwijs:     + Appartement Parkstraat 32, Leuven (unit 0101)  (925.83 €)
+22:01:09 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=3950  [application/json; charset=utf-8]
+22:01:09 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8759817, 'longitude': 4.705255, 'street': 'Vlamingenstraat', 'number': '36', 'city':"  →  'Vlamingenstraat 36, Leuven'
+22:01:09 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 950.0, 'to': None}"  →  '950'
+22:01:09 [INFO   ] kot.kotwijs:     + Studio Vlamingenstraat 36, Leuven (unit 0201)  (950 €)
+22:01:10 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=13398  [application/json; charset=utf-8]
+22:01:10 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8783352, 'longitude': 4.7012381, 'street': 'Muntstraat', 'number': '6', 'city': 'Leu"  →  'Muntstraat 6, Leuven'
+22:01:10 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 1100.0, 'to': None}"  →  '1100'
+22:01:10 [INFO   ] kot.kotwijs:     + Studio Muntstraat 6, Leuven (unit 0001)  (1100 €)
+22:01:11 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=10397  [application/json; charset=utf-8]
+22:01:11 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8783597, 'longitude': 4.7010853, 'street': 'Muntstraat', 'number': '2', 'city': 'Leu"  →  'Muntstraat 2, Leuven'
+22:01:11 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 792.5, 'to': None}"  →  '792.5'
+22:01:11 [INFO   ] kot.kotwijs:     + Huis Muntstraat 2, Leuven (unit 0204)  (792.5 €)
+22:01:11 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=10271  [application/json; charset=utf-8]
+22:01:11 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.87835, 'longitude': 4.7025258, 'street': 'Jozef Vounckplein', 'number': '1', 'city':"  →  'Jozef Vounckplein 1, Leuven'
+22:01:11 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 1023.0, 'to': None}"  →  '1023'
+22:01:11 [INFO   ] kot.kotwijs:     + Studio Jozef Vounckplein 1, Leuven (unit 0401)  (1023 €)
+22:01:13 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=10567  [application/json; charset=utf-8]
+22:01:13 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8764008, 'longitude': 4.6977476, 'street': 'Parijsstraat', 'number': '78', 'city': '"  →  'Parijsstraat 78, Leuven'
+22:01:13 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 770.83, 'to': None}"  →  '770.83'
+22:01:13 [INFO   ] kot.kotwijs:     + Huis Parijsstraat 78, Leuven (unit 0101)  (770.83 €)
+22:01:14 [DEBUG  ] kot.kotwijs: GET 200  https://main-api.kotwijs.be/api/tenants/listingdetail/getdetail?id=12630  [application/json; charset=utf-8]
+22:01:14 [DEBUG  ] kot.kotwijs:   field 'address': raw="{'latitude': 50.8755633, 'longitude': 4.6976651, 'street': 'Schapenstraat', 'number': '37', 'city': "  →  'Schapenstraat 37, Leuven'
+22:01:14 [DEBUG  ] kot.kotwijs:   field 'price': raw="{'from': 1063.0, 'to': 1063.0}"  →  '1063'
+22:01:14 [INFO   ] kot.kotwijs:     + Studio Schapenstraat 37, Leuven  (1063 €)

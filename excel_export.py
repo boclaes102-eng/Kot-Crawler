@@ -10,31 +10,30 @@ from openpyxl.utils import get_column_letter
 from models import KotListing
 
 HEADERS = [
-    ("Link",               28),
-    ("Bron",               14),
-    ("Titel",              30),
-    ("Adres",              28),
-    ("Wijk",               18),
-    ("Prijs (€/maand)",    16),
-    ("Opp. (m²)",          12),
-    ("€/m²",               10),
-    ("Type",               14),
-    ("Gemeubeld",          12),
-    ("Eigen badkamer",     14),
-    ("Gedeelde badkamer",  16),
-    ("Eigen keuken",       13),
-    ("Gedeelde keuken",    15),
-    ("Internet incl.",     14),
-    ("Kosten incl.",       13),
-    ("Wasmachine",         13),
-    ("Lift",               10),
-    ("Huisdieren OK",      14),
-    ("Beschikbaar vanaf",  18),
-    ("Gecrawled op",       18),
+    ("Link",               14),
+    ("Source",             16),
+    ("Title",              40),
+    ("Address",            30),
+    ("Neighborhood",       16),
+    ("Price (€/month)",    15),
+    ("Size (m²)",          10),
+    ("Price/m²",           10),
+    ("Type",               13),
+    ("Furnished",          11),
+    ("Private bathroom",   16),
+    ("Shared bathroom",    16),
+    ("Private kitchen",    15),
+    ("Shared kitchen",     15),
+    ("Internet included",  16),
+    ("Utilities included", 16),
+    ("Washing machine",    16),
+    ("Elevator",           10),
+    ("Pets allowed",       12),
+    ("Available from",     15),
+    ("Scraped on",         17),
 ]
 
 HEADER_FILL   = PatternFill("solid", fgColor="1F497D")
-ROW_FILL_ODD  = PatternFill("solid", fgColor="FFFFFF")
 ROW_FILL_EVEN = PatternFill("solid", fgColor="DCE6F1")
 
 THIN = Border(
@@ -76,6 +75,7 @@ def export_to_excel(listings: List[KotListing], filepath: str) -> None:
     ws = wb.active
     ws.title = "Koten Leuven"
     ws.freeze_panes = "A2"
+    ws.auto_filter.ref = f"A1:{get_column_letter(len(HEADERS))}{max(len(listings) + 1, 2)}"
 
     # ── Header row ──────────────────────────────────────────────────────
     header_font = Font(bold=True, color="FFFFFF", size=11)
@@ -83,44 +83,49 @@ def export_to_excel(listings: List[KotListing], filepath: str) -> None:
         cell = ws.cell(row=1, column=col_idx, value=label)
         cell.font = header_font
         cell.fill = HEADER_FILL
-        cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=False)
+        cell.alignment = Alignment(horizontal="center", vertical="center")
         cell.border = THIN
         ws.column_dimensions[get_column_letter(col_idx)].width = width
-
     ws.row_dimensions[1].height = 20
 
-    # ── Data rows ────────────────────────────────────────────────────────
-    link_font_blue   = Font(color="0563C1", underline="single", size=10)
-    normal_font      = Font(size=10)
-    missing_font     = Font(color="A6A6A6", italic=True, size=10)
+    # ── Data rows ───────────────────────────────────────────────────────
+    link_font   = Font(color="0563C1", underline="single", size=10)
+    normal_font = Font(size=10)
+
+    numeric_cols = {6, 7, 8}  # price, size, price/m²
 
     for row_idx, listing in enumerate(listings, start=2):
-        fill = ROW_FILL_ODD if row_idx % 2 == 1 else ROW_FILL_EVEN
         row_data = _listing_to_row(listing)
+        even = row_idx % 2 == 0
 
         for col_idx, value in enumerate(row_data, start=1):
-            cell = ws.cell(row=row_idx, column=col_idx, value=value)
-            cell.fill = fill
+            cell = ws.cell(row=row_idx, column=col_idx)
             cell.border = THIN
-            cell.alignment = Alignment(vertical="center", wrap_text=False)
+            cell.alignment = Alignment(vertical="center")
+            cell.font = normal_font
+            if even:
+                cell.fill = ROW_FILL_EVEN
 
-            if col_idx == 1 and value and value != "missing":
-                # Clickable hyperlink in the first column
-                cell.hyperlink = value
+            if col_idx == 1 and value:
                 cell.value = "Open listing"
-                cell.font = link_font_blue
-            elif value == "missing":
-                cell.font = missing_font
+                cell.hyperlink = value
+                cell.font = link_font
+            elif col_idx in numeric_cols and value:
+                try:
+                    cell.value = float(value)
+                    cell.number_format = "0.0" if col_idx == 8 else "0"
+                except ValueError:
+                    cell.value = value
             else:
-                cell.font = normal_font
+                cell.value = value if value else None  # empty cell when unknown
 
         ws.row_dimensions[row_idx].height = 16
 
-    # ── Summary sheet ────────────────────────────────────────────────────
-    ws_summary = wb.create_sheet("Samenvatting")
-    ws_summary["A1"] = "Gecrawled op"
+    # ── Summary sheet ───────────────────────────────────────────────────
+    ws_summary = wb.create_sheet("Summary")
+    ws_summary["A1"] = "Scraped on"
     ws_summary["B1"] = datetime.now().strftime("%Y-%m-%d %H:%M")
-    ws_summary["A2"] = "Aantal koten gevonden"
+    ws_summary["A2"] = "Listings found"
     ws_summary["B2"] = len(listings)
 
     sources: dict[str, int] = {}
@@ -130,6 +135,7 @@ def export_to_excel(listings: List[KotListing], filepath: str) -> None:
     for i, (src, count) in enumerate(sources.items(), start=5):
         ws_summary.cell(row=i, column=1, value=src)
         ws_summary.cell(row=i, column=2, value=count)
+    ws_summary.column_dimensions["A"].width = 20
 
     wb.save(filepath)
     print(f"\n  Saved: {filepath}")

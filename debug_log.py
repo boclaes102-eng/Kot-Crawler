@@ -5,7 +5,6 @@ Paste the content of debug.log here to get scrapers fixed.
 from __future__ import annotations
 
 import logging
-import sys
 from datetime import datetime
 from pathlib import Path
 
@@ -13,11 +12,6 @@ LOG_FILE = Path("debug.log")
 MAX_LOG_SIZE_BYTES = 2 * 1024 * 1024  # rotate after 2 MB
 
 _file_handler: logging.FileHandler | None = None
-
-
-class _ConsoleFormatter(logging.Formatter):
-    def format(self, record: logging.LogRecord) -> str:
-        return record.getMessage()
 
 
 class _FileFormatter(logging.Formatter):
@@ -38,17 +32,13 @@ def setup(test_mode: bool = False) -> None:
     root.setLevel(logging.DEBUG)
     root.handlers.clear()
 
-    # File: full detail (DEBUG)
+    # File: full detail (DEBUG).  Console output is done with print()
+    # in the scrapers themselves — no console handler here, otherwise
+    # every message would appear twice.
     _file_handler = logging.FileHandler(LOG_FILE, encoding="utf-8", mode="a")
     _file_handler.setLevel(logging.DEBUG)
     _file_handler.setFormatter(_FileFormatter())
     root.addHandler(_file_handler)
-
-    # Console: only INFO and above (clean output)
-    ch = logging.StreamHandler(sys.stdout)
-    ch.setLevel(logging.INFO)
-    ch.setFormatter(_ConsoleFormatter())
-    root.addHandler(ch)
 
     # Write run header directly so it stands out
     with open(LOG_FILE, "a", encoding="utf-8") as f:
