@@ -28,23 +28,28 @@ SITES = [
 
 
 def deduplicate(listings: list) -> list:
-    """Drop cross-site duplicates: same street address AND same price.
+    """Drop cross-site duplicates: same street address AND same price,
+    listed on two DIFFERENT sites.
 
     Sites earlier in SITES win (kotwijs has the best data quality).
-    Only addresses with a house number count — a bare city name like
-    "Leuven" would wrongly merge different koten.
+    Two same-site listings never count as duplicates — buildings often
+    contain several identical units at the same price (kotwijs lists
+    them per unit).  Only addresses with a house number count — a bare
+    city name like "Leuven" would wrongly merge different koten.
     """
     log = debug_log.get("main")
-    seen: set[tuple[str, str]] = set()
+    seen: dict[tuple[str, str], str] = {}  # (address, price) -> source
     unique = []
     for l in listings:
         addr = "".join(l.address.lower().split())
         if addr and any(c.isdigit() for c in addr) and l.price_eur_month:
             key = (addr, l.price_eur_month)
-            if key in seen:
-                log.debug(f"Duplicate dropped: {l.source} {l.address} ({l.price_eur_month} €)")
+            first_source = seen.get(key)
+            if first_source is not None and first_source != l.source:
+                log.debug(f"Cross-site duplicate dropped: {l.source} {l.address} "
+                          f"({l.price_eur_month} €) — already listed on {first_source}")
                 continue
-            seen.add(key)
+            seen.setdefault(key, l.source)
         unique.append(l)
     removed = len(listings) - len(unique)
     if removed:
