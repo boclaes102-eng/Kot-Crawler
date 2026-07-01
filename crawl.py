@@ -14,14 +14,48 @@ from datetime import datetime
 
 import debug_log
 from excel_export import export_to_excel
-from scrapers import studentenkot, kotweb, kotnet, immoweb
+from scrapers import huurwoningen, immoweb, kotwijs, tweedehands, zimmo
 
+# kotwijs.be first: it is the official KU Leuven kot database and by far
+# the richest source. The others add listings that are not on kotwijs.
 SITES = [
-    ("2dehands.be",       studentenkot.scrape),
-    ("zimmo.be",          kotweb.scrape),
-    ("huurwoningen.be",   kotnet.scrape),
-    ("immoweb.be",        immoweb.scrape),
+    ("kotwijs.be",      kotwijs.scrape),
+    ("2dehands.be",     tweedehands.scrape),
+    ("huurwoningen.be", huurwoningen.scrape),
+    ("immoweb.be",      immoweb.scrape),
+    ("zimmo.be",        zimmo.scrape),
 ]
+
+
+def deduplicate(listings: list) -> list:
+    """Drop cross-site duplicates: same street address AND same price,
+    listed on two DIFFERENT sites.
+
+    Sites earlier in SITES win (kotwijs has the best data quality).
+    Two same-site listings never count as duplicates — buildings often
+    contain several identical units at the same price (kotwijs lists
+    them per unit).  Only addresses with a house number count — a bare
+    city name like "Leuven" would wrongly merge different koten.
+    """
+    log = debug_log.get("main")
+    seen: dict[tuple[str, str], str] = {}  # (address, price) -> source
+    unique = []
+    for l in listings:
+        addr = "".join(l.address.lower().split())
+        if addr and any(c.isdigit() for c in addr) and l.price_eur_month:
+            key = (addr, l.price_eur_month)
+            first_source = seen.get(key)
+            if first_source is not None and first_source != l.source:
+                log.debug(f"Cross-site duplicate dropped: {l.source} {l.address} "
+                          f"({l.price_eur_month} €) — already listed on {first_source}")
+                continue
+            seen.setdefault(key, l.source)
+        unique.append(l)
+    removed = len(listings) - len(unique)
+    if removed:
+        log.info(f"  Deduplication removed {removed} cross-site duplicates")
+        print(f"  Removed {removed} cross-site duplicates")
+    return unique
 
 
 def main() -> None:
@@ -53,6 +87,8 @@ def main() -> None:
             log.error(f"  [ERROR] {site_name} crashed: {e}", exc_info=True)
             print(f"  [ERROR] {site_name} crashed: {e}")
 
+    all_listings = deduplicate(all_listings)
+
     print()
     print("=" * 54)
     print(f"  Total available koten found: {len(all_listings)}")
@@ -63,7 +99,7 @@ def main() -> None:
     if not all_listings:
         print("\n  No listings found.")
         print("  Possible reasons:")
-        print("    - Sites changed their HTML (update CSS selectors)")
+        print("    - Sites changed their HTML/API (check debug.log)")
         print("    - Network/firewall blocking requests")
         print("    - All koten are taken right now (try again tomorrow)")
         print(f"\n  Full details written to: debug.log")

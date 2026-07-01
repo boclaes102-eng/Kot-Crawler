@@ -1,0 +1,12 @@
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Run output
+debug.log
+debug.log.old
+koten_leuven_*.xlsx
+
+# Virtual environments
+venv/
+.venv/
